@@ -1,14 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiLogOut } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
+import api from '../../services/api';
 
 import { Header, Profile, Info, Social, Bio } from './styles';
 
+interface UserParams {
+  login: string;
+}
+
+interface UserData {
+  login: string;
+  name: string;
+  email: string;
+  avatar_url: string;
+  followers: number;
+  following: number;
+  public_repos: number;
+  bio: string;
+  location: string;
+}
+
 const Home: React.FC = () => {
+  const [data, setData] = useState<UserData | null>(null);
+
+  const { params } = useRouteMatch<UserParams>();
+
+  useEffect(() => {
+    api.get(`/users/${params.login}`).then(response => {
+      setData(response.data);
+    });
+  }, [params.login]);
+
   return (
     <>
       <Header>
-        <p>#anilton.veiga</p>
+        <p>#{data?.login}</p>
 
         <Link to="/">
           Sair
@@ -17,26 +44,27 @@ const Home: React.FC = () => {
       </Header>
 
       <Profile>
-        <img src="https://avatars.githubusercontent.com/u/42624981?s=460&u=188dc2e1e9964c8008135f43468f0db8db3cf70b&v=4" alt="" />
+        <img src={data?.avatar_url} alt={data?.name} />
 
-        <Info><h2>ANILTON VEIGA</h2>
-          <p>anilton.veiga@gmail.com</p>
-          <p>Itai/SP</p>
+        <Info>
+          <h2>{data?.name}</h2>
+          <p>{data?.email}</p>
+          <p>{data?.location}</p>
         </Info>
 
         <Social>
           <Link to="#">
-            <span>32</span>
+            <span>{data?.followers}</span>
             <span>Seguidores</span>
           </Link>
 
           <Link to="#">
-            <span>32</span>
+            <span>{data?.following}</span>
             <span>Seguindo</span>
           </Link>
 
           <Link to="#">
-            <span>10</span>
+            <span>{data?.public_repos}</span>
             <span>Repos</span>
           </Link>
         </Social>
@@ -44,7 +72,7 @@ const Home: React.FC = () => {
         <Bio>
           <h2>BIO</h2>
 
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci voluptas vitae vero, obcaecati, molestiae sint cupiditate nemo dicta sit saepe, dignissimos possimus enim iure repellendus laudantium doloremque assumenda iusto minus!</p>
+          <p>{data?.bio}</p>
         </Bio>
       </Profile>
     </>

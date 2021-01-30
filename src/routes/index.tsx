@@ -7,7 +7,7 @@ import Home from '../pages/Home';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={Login} />
-    <Route path="/home" component={Home} />
+    <Route path="/home/:login" component={Home} />
   </Switch>
 )
 
