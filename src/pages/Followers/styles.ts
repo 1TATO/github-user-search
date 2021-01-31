@@ -7,10 +7,16 @@ export const DetailsHeader = styled.header`
   font-weight: bold;
   display: flex;
 
-  svg {
-    margin: auto 20px;
-    width: 30px;
-    height: 30px;
+  button {
+    background: #1F1F1F;
+    border: 0;
+    color: #fff;
+    
+    svg {
+      margin: auto 20px;
+      width: 30px;
+      height: 30px;
+    }
   }
 
   p {
