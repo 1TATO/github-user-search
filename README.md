@@ -29,6 +29,9 @@
   <a href="#memo-license">License</a>
 </p>
 
+## You can try this app here
+<h4>Deploy: https://github-user-search-1tato.netlify.app</h4>
+
 ## :rocket: Technologies
 
 -  [ReactJS](https://reactjs.org/)
