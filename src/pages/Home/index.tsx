@@ -13,6 +13,7 @@ interface UserData {
   login: string;
   name: string;
   email: string;
+  company: string;
   avatar_url: string;
   followers: number;
   following: number;
@@ -49,21 +50,22 @@ const Home: React.FC = () => {
         <Info>
           <h2>{data?.name}</h2>
           <p>{data?.email}</p>
+          <p>{data?.company}</p>
           <p>{data?.location}</p>
         </Info>
 
         <Social>
-          <Link to="#">
+          <Link to={`/${params.login}/followers`}>
             <span>{data?.followers}</span>
             <span>Seguidores</span>
           </Link>
 
-          <Link to="#">
+          <Link to={`/${params.login}/following`}>
             <span>{data?.following}</span>
             <span>Seguindo</span>
           </Link>
 
-          <Link to="#">
+          <Link to={`/${params.login}/repos`}>
             <span>{data?.public_repos}</span>
             <span>Repos</span>
           </Link>
