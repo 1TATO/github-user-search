@@ -3,6 +3,8 @@ import { FiLogOut } from 'react-icons/fi';
 import { Link, useRouteMatch } from 'react-router-dom';
 import api from '../../services/api';
 
+import NavBar from '../../components/NavBar';
+
 import { Header, Profile, Info, Social, Bio } from './styles';
 
 interface UserParams {
@@ -77,6 +79,8 @@ const Home: React.FC = () => {
           <p>{data?.bio}</p>
         </Bio>
       </Profile>
+
+      <NavBar></NavBar>
     </>
   )
 }

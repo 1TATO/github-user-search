@@ -4,6 +4,7 @@ import { FiArrowRight } from 'react-icons/fi';
 import api from '../../services/api';
 
 import UserHeader from '../../components/UserHeader';
+import NavBar from '../../components/NavBar';
 
 import { FollowersContainer } from './styles';
 
@@ -56,6 +57,8 @@ const Followers: React.FC = () => {
           </FollowersContainer>
         ))
       }
+
+      <NavBar></NavBar>
     </>
   )
 }

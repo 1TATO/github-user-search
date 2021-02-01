@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
-import { FiArrowLeft, FiStar, FiUnlock, FiLock } from 'react-icons/fi';
+import { FiStar, FiUnlock, FiLock } from 'react-icons/fi';
 import api from '../../services/api';
 
 import UserHeader from '../../components/UserHeader';
+import NavBar from '../../components/NavBar';
 
-import { DetailsHeader, RepositoriesContainer, Actions, Stars, Locks } from './styles';
+import { RepositoriesContainer, Actions, Stars, Locks } from './styles';
 
 interface UserParams {
   login: string;
@@ -66,6 +67,8 @@ const Repositories: React.FC = () => {
           </RepositoriesContainer>
         ))
       }
+
+      <NavBar></NavBar>
     </>
   )
 }
